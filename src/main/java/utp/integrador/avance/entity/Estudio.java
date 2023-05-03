@@ -8,20 +8,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "estudio")
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Estudio {
 
     @Id
     @GeneratedValue
-    private Long user_id;
+    private Long estudio_id;
 
-    private String email;
+    private Titulo titulo;
 
-    private String password;
+    private Especialidad especialidad;
 
+    private Date fecha_culmina;
+
+    private String ciudad;
 }

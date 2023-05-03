@@ -1,27 +1,25 @@
 package utp.integrador.avance.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "trabajo")
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Trabajo {
 
-    @Id
-    @GeneratedValue
-    private Long user_id;
+    private String trabajo_id;
 
-    private String email;
+    private String cargo;
 
-    private String password;
+    private Date tiempo_inicio;
 
+    private Date timpo_final;
 }

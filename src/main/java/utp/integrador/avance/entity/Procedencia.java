@@ -8,20 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
-@Table(name = "user")
+@Table(name = "procedencia")
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Procedencia {
 
     @Id
     @GeneratedValue
-    private Long user_id;
+    private Long procedencia_id;
 
-    private String email;
-
-    private String password;
-
+    private String descripcion;
 }
