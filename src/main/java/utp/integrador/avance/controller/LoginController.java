@@ -18,14 +18,9 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    DocumentoRepository documentoRepository;
-
-    @Autowired
-    SexoRepository sexoRepository;
+    @Autowired UserRepository userRepository;
+    @Autowired DocumentoRepository documentoRepository;
+    @Autowired SexoRepository sexoRepository;
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
@@ -47,13 +42,11 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLogin(Model model) {
-
         return "index";
     }
     //Check for Credentials
     @PostMapping("/login")
     public String login(@ModelAttribute(name="loginForm") User user, Model m) {
-        System.out.println("--------> "+user.getEmail());
         String uname = user.getEmail();
         String pass = user.getPassword();
         if (uname.equals("admin") && pass.equals("12345")) {

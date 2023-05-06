@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form method="post" th:action="@{/registerPersonal}" th:object="${personales}" class="col card p-3 mb-5">
+<form method="post" th:action="@{/registerPersonal/{email}(email = ${email})}" th:object="${personales}" class="col card p-3 mb-5">
 
   <div class="form-group">
     <label for="documento">documento</label>

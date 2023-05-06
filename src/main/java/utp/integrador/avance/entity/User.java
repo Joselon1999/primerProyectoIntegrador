@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "users")
@@ -17,7 +19,7 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY )
     private Long userId;
 
     private String email;

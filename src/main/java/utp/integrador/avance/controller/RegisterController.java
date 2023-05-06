@@ -9,47 +9,33 @@ import utp.integrador.avance.entity.Datos_Personales;
 import utp.integrador.avance.entity.Documento;
 import utp.integrador.avance.entity.Sexo;
 import utp.integrador.avance.entity.User;
-import utp.integrador.avance.repository.DatosPersonalesRepository;
-import utp.integrador.avance.repository.DocumentoRepository;
-import utp.integrador.avance.repository.SexoRepository;
-import utp.integrador.avance.repository.UserRepository;
-
-import java.util.List;
+import utp.integrador.avance.service.RegisterService;
 
 @Controller
 public class RegisterController {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    DocumentoRepository documentoRepository;
-
-    @Autowired
-    SexoRepository sexoRepository;
-
-    @Autowired
-    DatosPersonalesRepository datosPersonalesRepository;
+    RegisterService registerService;
 
     @RequestMapping("/welcome")
     public String registerMessage() {
         User user = new User();
         user.setEmail("correo@gmail.com");
         user.setPassword("pass");
-        userRepository.save(user);
+        registerService.registerUser(user);
 
         Documento documento = new Documento();
         documento.setDescripcion("DNI");
-        documentoRepository.save(documento);
+        registerService.registerDocumento(documento);
 
         Sexo sexo = new Sexo();
         sexo.setDescripcion("Hombre");
-        sexoRepository.save(sexo);
+        registerService.registerSexo(sexo);
 
-        Datos_Personales personales = new Datos_Personales();
-        personales.setDocumento(documentoRepository.findById(1).orElse(new Documento()));
-        personales.setSexo(sexoRepository.findById(1).orElse(new Sexo()));
-        datosPersonalesRepository.save(personales);
+        //Datos_Personales personales = new Datos_Personales();
+        //personales.setDocumento(documentoRepository.findById(1).orElse(new Documento()));
+        //personales.setSexo(sexoRepository.findById(1).orElse(new Sexo()));
+        //datosPersonalesRepository.save(personales);
 
         //PARA REVISAR
         //User user1 = userRepository.findByEmail("correo@gmail.com").orElse(new User());
@@ -65,26 +51,26 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String registerMessage(Model model) {
-
         return "registerUserPage";
     }
 
     @PostMapping("/registerUser")
     public String registerUser(Model model, @ModelAttribute User user) {
-        userRepository.save(user);
+        registerService.registerUser(user);
 
-        //model.addAttribute("user", user);
+        model.addAttribute("email", user.getEmail());
         model.addAttribute("personales", new Datos_Personales());
-        model.addAttribute("documentos", documentoRepository.findAll());
-        model.addAttribute("sexos", sexoRepository.findAll());
+        model.addAttribute("documentos", registerService.listDocumentos());
+        model.addAttribute("sexos", registerService.listSexo());
         return "registerPersonalPage";
     }
 
-    @PostMapping("/registerPersonal")
-    public String loginMessage(Model model, @ModelAttribute Datos_Personales personales) {
-        System.out.println("-------------> "+personales.getDocumento().getDescripcion());
-        System.out.println("-------------> "+personales.getSexo().getDescripcion());
-        datosPersonalesRepository.save(personales);
+    @PostMapping("/registerPersonal/{email}")
+    public String loginMessage(@PathVariable String email, @ModelAttribute Datos_Personales personales) {
+        System.out.println("EMAIL: "+email);
+        User usuario = registerService.findUser(email);
+        personales.setUser(usuario);
+        registerService.registerDatosPersonales(personales);
 
         return "welcome";
     }
