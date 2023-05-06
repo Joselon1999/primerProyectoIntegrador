@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Registro</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<form method="post" th:action="@{/registerPersonal}" th:object="${personales}" class="col card p-3 mb-5">
+
+  <div class="form-group">
+    <label for="documento">documento</label>
+    <select id="documento" class="form-control "th:field="*{documento}">
+      <option th:each="doc : ${documentos}"
+              th:value="${doc.documento_id}"
+              th:text="${doc.descripcion}">
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="numero_documento">numero documento</label>
+    <input id="numero_documento" placeholder="Ingrese numero documento" required type="text" th:field="*{numero_documento}"
+           class="form-control"/>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="nombres">nombres</label>
+    <input id="nombres" placeholder="Ingrese nombres" required type="text" th:field="*{nombres}"
+           class="form-control"/>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="paterno">paterno</label>
+    <input id="paterno" placeholder="Ingrese paterno" required type="text" th:field="*{paterno}"
+           class="form-control"/>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="materno">materno</label>
+    <input id="materno" placeholder="Ingrese materno" required type="text" th:field="*{materno}"
+           class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="sexo">sexo</label>
+    <select id="sexo" class="form-control " th:field="*{sexo}">
+      <option th:each="s : ${sexos}"
+              th:value="${s.sexo_id}"
+              th:text="${s.descripcion}">
+      </option>
+    </select>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="telef_fijo">telef_fijo</label>
+    <input id="telef_fijo" placeholder="Ingrese telef_fijo" required type="text" th:field="*{telef_fijo}"
+           class="form-control"/>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="celular">celular</label>
+    <input id="celular" placeholder="Ingrese celular" required type="text" th:field="*{celular}"
+           class="form-control"/>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Registrar datos personales">
+</form>
+
+</body>
+</html>
