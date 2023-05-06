@@ -1,10 +1,7 @@
 package utp.integrador.avance.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,16 +9,19 @@ import lombok.Setter;
 @Table(name = "user_sede")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class User_Sede {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Sede sede;
 
+    @OneToOne
     private User user;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Procedencia procedencia;
 }

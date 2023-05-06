@@ -1,25 +1,27 @@
 package utp.integrador.avance.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "trabajo")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Trabajo {
 
-    private String trabajo_id;
+    @Id
+    @GeneratedValue
+    private Long trabajo_id;
 
     private String cargo;
 
-    private Date tiempo_inicio;
+    private String tiempo_inicio;
 
-    private Date timpo_final;
+    private String timpo_final;
 }

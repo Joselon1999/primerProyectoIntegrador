@@ -1,8 +1,7 @@
 package utp.integrador.avance.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,12 +9,16 @@ import lombok.Setter;
 @Table(name = "est_profesional")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Est_Profesional {
 
+    @Id
+    @GeneratedValue
     private String profesion_id;
 
+    @OneToOne
     private User user;
 
+    @ManyToOne
     private Estudio estudio;
 }

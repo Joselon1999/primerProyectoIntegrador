@@ -1,10 +1,7 @@
 package utp.integrador.avance.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,18 +11,20 @@ import java.util.Date;
 @Table(name = "estudio")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Estudio {
 
     @Id
     @GeneratedValue
     private Long estudio_id;
 
+    @ManyToOne
     private Titulo titulo;
 
+    @ManyToOne
     private Especialidad especialidad;
 
-    private Date fecha_culmina;
+    private String fecha_culmina;
 
     private String ciudad;
 }

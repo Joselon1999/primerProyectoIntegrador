@@ -1,24 +1,22 @@
 package utp.integrador.avance.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "datos_personales")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Datos_Personales {
 
     @Id
     @GeneratedValue
     private Long personales_id;
 
+    @ManyToOne
     private Documento documento;
 
     private String numero_documento;
@@ -29,11 +27,18 @@ public class Datos_Personales {
 
     private String materno;
 
+    @ManyToOne
     private Sexo sexo;
 
     private String telef_fijo;
 
     private String celular;
 
+    @OneToOne
     private User user;
+
+    @Override
+    public String toString() {
+        return documento.getDescripcion()+ " " + sexo.getDescripcion();
+    }
 }
