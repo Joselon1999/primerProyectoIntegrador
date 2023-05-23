@@ -6,12 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import utp.integrador.avance.entity.Documento;
-import utp.integrador.avance.entity.Sexo;
-import utp.integrador.avance.entity.User;
-import utp.integrador.avance.repository.DocumentoRepository;
-import utp.integrador.avance.repository.SexoRepository;
-import utp.integrador.avance.repository.UserRepository;
+import utp.integrador.avance.entity.*;
+import utp.integrador.avance.repository.*;
 
 import java.util.List;
 
@@ -21,6 +17,12 @@ public class LoginController {
     @Autowired UserRepository userRepository;
     @Autowired DocumentoRepository documentoRepository;
     @Autowired SexoRepository sexoRepository;
+
+    @Autowired EspecialidadRepository especialidadRepository;
+
+    @Autowired TituloRepository tituloRepository;
+
+    @Autowired EstudioRepository estudioRepository;
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
@@ -37,6 +39,15 @@ public class LoginController {
         Sexo sexo2 = new Sexo();
         sexo2.setDescripcion("Femenino");
         sexoRepository.save(sexo2);
+        Especialidad especialidad = new Especialidad();
+        especialidad.setDescripcion("Sistemas");
+        especialidadRepository.save(especialidad);
+        Titulo titulo = new Titulo();
+        titulo.setDescripcion("Bachiller");
+        tituloRepository.save(titulo);
+        Estudio estudio = new Estudio();
+        estudio.setCiudad("Chosicayork");
+        estudioRepository.save(estudio);
         return "index";
     }
 
