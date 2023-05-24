@@ -20,5 +20,5 @@ public class Exp_Laboral {
     private User user;
 
     @ManyToOne
-    private Estudio estudio;
+    private Trabajo trabajo;
 }

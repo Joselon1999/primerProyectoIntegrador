@@ -36,14 +36,14 @@ public class RegisterStudiesController {
     public String saveEstudio(Model model, @ModelAttribute("estudio") Estudio estudio, @PathVariable(value = "email") String email) {
         model.addAttribute("email", email);
         estudioService.save(estudio,email);
-        return "redirect:/est/"+email;
+        return "redirect:/est/{email}";
     }
 
     @PostMapping("/update/{email}")
     public String updateEstudio(Model model, @ModelAttribute("estudio") Estudio estudio, @PathVariable(value = "email") String email) {
         model.addAttribute("email", email);
         estudioService.update(estudio,email);
-        return "redirect:/est/"+email;
+        return "redirect:/est/{email}";
     }
 
     @GetMapping("/showFormForUpdate/{id}/{email}")
@@ -60,7 +60,7 @@ public class RegisterStudiesController {
     public String deleteThroughId(@PathVariable(value = "id") Integer id, @PathVariable(value = "email") String email, Model model) {
         model.addAttribute("email", email);
         estudioService.deleteViaId(id);
-        return "redirect:/est/"+email;
+        return "redirect:/est/{email}";
 
     }
 }

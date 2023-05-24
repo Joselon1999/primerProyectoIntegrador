@@ -17,7 +17,7 @@ public class Trabajo {
 
     @Id
     @GeneratedValue
-    private Long trabajo_id;
+    private Long id;
 
     private String cargo;
 
