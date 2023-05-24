@@ -14,6 +14,9 @@
     <hr>
     <form action="#" th:action="@{/est/save}" th:object="${estudio}"
           method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{estudio_id}" />
+
         <div class="form-group">
             <label for="titulo">Seleccione Grado de Titulacion</label>
             <select id="titulo" class="form-control "th:field="*{titulo}">
@@ -42,7 +45,7 @@
                    class="form-control"/>
         </div>
 
-        <button type="submit" class="btn btn-info col-2">Guardar estudio</button>
+        <button type="submit" class="btn btn-info col-2">Actualizar estudio</button>
     </form>
 
     <hr>

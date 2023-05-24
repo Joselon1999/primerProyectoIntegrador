@@ -2,8 +2,12 @@ package utp.integrador.avance.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import utp.integrador.avance.entity.Especialidad;
 import utp.integrador.avance.entity.Estudio;
+import utp.integrador.avance.entity.Titulo;
+import utp.integrador.avance.repository.EspecialidadRepository;
 import utp.integrador.avance.repository.EstudioRepository;
+import utp.integrador.avance.repository.TituloRepository;
 import utp.integrador.avance.service.RegisterStudiesService;
 
 import java.util.List;
@@ -14,21 +18,27 @@ public class RegisterStudiesServiceImpl implements RegisterStudiesService {
 
 
     @Autowired
-    private EstudioRepository repository;
+    private EstudioRepository estudioRepository;
+
+    @Autowired
+    private EspecialidadRepository especialidadRepository;
+
+    @Autowired
+    private TituloRepository tituloRepository;
 
     @Override public List<Estudio> getAllEstudio()
     {
-        return repository.findAll();
+        return estudioRepository.findAll();
     }
 
     @Override public void save(Estudio estudio)
     {
-        repository.save(estudio);
+        estudioRepository.save(estudio);
     }
 
     @Override public Estudio getById(Integer id)
     {
-        Optional<Estudio> optional = repository.findById(id);
+        Optional<Estudio> optional = estudioRepository.findById(id);
         Estudio estudio = null;
         if (optional.isPresent())
             estudio = optional.get();
@@ -40,7 +50,17 @@ public class RegisterStudiesServiceImpl implements RegisterStudiesService {
 
     @Override public void deleteViaId(Integer id)
     {
-        repository.deleteById(id);
+        estudioRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Titulo> listTitulos() {
+        return tituloRepository.findAll();
+    }
+
+    @Override
+    public List<Especialidad> listEspecialidades() {
+        return especialidadRepository.findAll();
     }
 }
 

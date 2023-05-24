@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class Estudio {
     @ManyToOne
     private Especialidad especialidad;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String fecha_culmina;
 
     private String ciudad;

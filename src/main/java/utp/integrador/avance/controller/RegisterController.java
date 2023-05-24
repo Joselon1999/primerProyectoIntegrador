@@ -72,6 +72,6 @@ public class RegisterController {
         personales.setUser(usuario);
         registerService.registerDatosPersonales(personales);
 
-        return "welcome";
+        return "registerStudies";
     }
 }

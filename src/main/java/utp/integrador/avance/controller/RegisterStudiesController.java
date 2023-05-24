@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import utp.integrador.avance.entity.Datos_Personales;
 import utp.integrador.avance.entity.Estudio;
 import utp.integrador.avance.service.RegisterStudiesService;
 
@@ -23,8 +24,10 @@ public class RegisterStudiesController {
 
     @GetMapping("/addnew")
     public String addNewEstudio(Model model) {
-        Estudio Estudio = new Estudio();
-        model.addAttribute("estudio", Estudio);
+        Estudio estudio = new Estudio();
+        model.addAttribute("estudio", estudio);
+        model.addAttribute("titulos", estudioService.listTitulos());
+        model.addAttribute("especialidades", estudioService.listEspecialidades());
         return "registerCourse";
     }
 
@@ -37,8 +40,10 @@ public class RegisterStudiesController {
     @GetMapping("/showFormForUpdate/{id}")
     public String updateForm(@PathVariable(value = "id") Integer id, Model model) {
         Estudio Estudio = estudioService.getById(id);
+        model.addAttribute("titulos", estudioService.listTitulos());
+        model.addAttribute("especialidades", estudioService.listEspecialidades());
         model.addAttribute("estudio", Estudio);
-        return "update";
+        return "updateCourse";
     }
 
     @GetMapping("/deleteEstudio/{id}")
