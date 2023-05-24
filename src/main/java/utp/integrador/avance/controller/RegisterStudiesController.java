@@ -16,40 +16,51 @@ public class RegisterStudiesController {
     @Autowired
     private RegisterStudiesService estudioService;
 
-    @GetMapping()
-    public String viewHomePage(Model model) {
-        model.addAttribute("allemplist", estudioService.getAllEstudio());
+    @GetMapping("/{email}")
+    public String viewHomePage(@PathVariable String email, Model model) {
+        model.addAttribute("allemplist", estudioService.getAllEstudio(email));
         return "registerStudies";
     }
 
-    @GetMapping("/addnew")
-    public String addNewEstudio(Model model) {
+    @GetMapping("/addnew/{email}")
+    public String addNewEstudio(@PathVariable String email,Model model) {
         Estudio estudio = new Estudio();
+        model.addAttribute("email", email);
         model.addAttribute("estudio", estudio);
         model.addAttribute("titulos", estudioService.listTitulos());
         model.addAttribute("especialidades", estudioService.listEspecialidades());
         return "registerCourse";
     }
 
-    @PostMapping("/save")
-    public String saveEstudio(@ModelAttribute("estudio") Estudio Estudio) {
-        estudioService.save(Estudio);
-        return "redirect:/est";
+    @PostMapping("/save/{email}")
+    public String saveEstudio(Model model, @ModelAttribute("estudio") Estudio estudio, @PathVariable(value = "email") String email) {
+        model.addAttribute("email", email);
+        estudioService.save(estudio,email);
+        return "redirect:/est/"+email;
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
-    public String updateForm(@PathVariable(value = "id") Integer id, Model model) {
+    @PostMapping("/update/{email}")
+    public String updateEstudio(Model model, @ModelAttribute("estudio") Estudio estudio, @PathVariable(value = "email") String email) {
+        model.addAttribute("email", email);
+        estudioService.update(estudio,email);
+        return "redirect:/est/"+email;
+    }
+
+    @GetMapping("/showFormForUpdate/{id}/{email}")
+    public String updateForm(@PathVariable(value = "id") Integer id,@PathVariable(value = "email") String email, Model model) {
         Estudio Estudio = estudioService.getById(id);
+        model.addAttribute("email", email);
         model.addAttribute("titulos", estudioService.listTitulos());
         model.addAttribute("especialidades", estudioService.listEspecialidades());
         model.addAttribute("estudio", Estudio);
         return "updateCourse";
     }
 
-    @GetMapping("/deleteEstudio/{id}")
-    public String deleteThroughId(@PathVariable(value = "id") Integer id) {
+    @GetMapping("/deleteEstudio/{id}/{email}")
+    public String deleteThroughId(@PathVariable(value = "id") Integer id, @PathVariable(value = "email") String email, Model model) {
+        model.addAttribute("email", email);
         estudioService.deleteViaId(id);
-        return "redirect:/est";
+        return "redirect:/est/"+email;
 
     }
 }

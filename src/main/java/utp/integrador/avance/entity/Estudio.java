@@ -17,7 +17,7 @@ public class Estudio {
 
     @Id
     @GeneratedValue
-    private Long estudio_id;
+    private Long id;
 
     @ManyToOne
     private Titulo titulo;

@@ -12,7 +12,7 @@
 <div class="container">
     <h1>Ingrese nuevo estudio</h1>
     <hr>
-    <form action="#" th:action="@{/est/save}" th:object="${estudio}"
+    <form action="#" th:action="@{/est/save/{email}(email = ${email})}" th:object="${estudio}"
           method="POST">
         <div class="form-group">
             <label for="titulo">Seleccione Grado de Titulacion</label>
@@ -47,7 +47,7 @@
 
     <hr>
 
-    <a th:href="@{/est}"> Volver a istado de estudios</a>
+    <a th:href="@{/est/{email}(email = ${email})}"> Volver a istado de estudios</a>
 </div>
 </body>
 </html>

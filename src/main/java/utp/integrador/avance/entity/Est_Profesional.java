@@ -14,7 +14,7 @@ public class Est_Profesional {
 
     @Id
     @GeneratedValue
-    private String profesion_id;
+    private Long profesion_id;
 
     @OneToOne
     private User user;

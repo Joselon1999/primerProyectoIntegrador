@@ -60,21 +60,21 @@ create table especialidad (
     );
 create table est_profesional (
        profesion_id varchar(255) not null,
-        estudio_estudio_id bigint,
+        estudio_id bigint,
         user_user_id bigint,
         primary key (profesion_id)
     );
 create table estudio (
-       estudio_id bigint not null,
+       id bigint not null,
         ciudad varchar(255),
         fecha_culmina varchar(255),
         especialidad_especialidad_id bigint,
         titulo_titulo_id bigint,
-        primary key (estudio_id)
+        primary key (id)
     );
 create table exp_laboral (
        experiencia_id bigint not null,
-        estudio_estudio_id bigint,
+        estudio_id bigint,
         user_user_id bigint,
         primary key (experiencia_id)
     );
@@ -132,7 +132,7 @@ alter table if exists datos_personales
        references users;
 alter table if exists est_profesional 
        add constraint FK47q8c4fgvex4fm4xrgg3xqmdx 
-       foreign key (estudio_estudio_id) 
+       foreign key (estudio_id)
        references estudio;
 alter table if exists est_profesional 
        add constraint FKbeufcprxesn7493gwbk4y88a5 
@@ -148,7 +148,7 @@ alter table if exists estudio
        references titulo;
 alter table if exists exp_laboral 
        add constraint FK4urvf8chriq3im4e138bwoe7q 
-       foreign key (estudio_estudio_id) 
+       foreign key (estudio_id)
        references estudio;
 alter table if exists exp_laboral 
        add constraint FK1yx5e7q4ddbbh5wag5bpctu93 
