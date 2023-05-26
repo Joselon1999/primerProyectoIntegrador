@@ -14,9 +14,5 @@ public interface EstProfesionRepository extends JpaRepository<Est_Profesional, I
     List<Est_Profesional> findAllByUserEmail(String email);
 
     Est_Profesional findByEstudioId(Integer id);
-
-    //@Modifying
-    //@Query("delete from Est_Profesional b where b.estudio.id=:id")
-    //void deleteEstudios(@Param("id") Integer id);
 }
 

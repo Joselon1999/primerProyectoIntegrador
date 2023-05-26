@@ -12,20 +12,34 @@
 <div class="container my-2" align="center">
 
     <h3>Listado de postulantes</h3>
-    <table style="width:80%" border="1"
+    <table style="width:90%" border="1"
            class = "table table-striped table-responsive-md">
         <thead>
         <tr>
             <th>id</th>
             <th>Email</th>
+            <th>Datos personales</th>
+            <th>Estudios profesionales</th>
+            <th>Experiencia laboral</th>
             <th>Estado</th>
+            <th>Opciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="user:${allUserlist}">>
+        <tr th:each="user:${allUserlist}">
             <td th:text="${user.userId}"></td>
             <td th:text="${user.email}"></td>
-            <td> Registrado</td>
+            <td><a th:href="@{/admin/personal/{userId}(userId=${user.userId})}"
+                   class="btn btn-secondary" style="color:white">Ver</a></td>
+            <td><a th:href="@{/admin/estudio/{email}(email=${user.email})}"
+                   class="btn btn-secondary" style="color:white">Ver</a></td>
+            <td><a th:href="@{/admin/experiencia/{email}(email=${user.email})}"
+                   class="btn btn-secondary" style="color:white">Ver</a></td>
+            <td th:text="${user.status}"></td>
+            <td><a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+                    class="btn btn-primary" style="color:white">Aprobar</a>
+                <a th:href="@{/admin/rechazar/{email}(email=${user.email})}"
+                   class="btn btn-danger" style="color:white">Rechazar</a></td>
         </tr>
         </tbody>
     </table>

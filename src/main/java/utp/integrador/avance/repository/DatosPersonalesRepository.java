@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface DatosPersonalesRepository extends JpaRepository<Datos_Personales, Integer> {
 
-    //@Query("select s from datos_personales s where s.userId = ?1")
-    List<Datos_Personales> findByUserUserId(int id);
+    Datos_Personales findByUserUserId(int id);
 }
 

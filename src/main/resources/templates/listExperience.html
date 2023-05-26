@@ -12,35 +12,26 @@
 <div class="container my-2" align="center">
 
   <h3>Listado de Experiencias Laborales</h3>
-  <a th:href="@{/exp/addnew/{email}(email = ${email})}" class="btn btn-primary btn-sm mb-3" >Agrege su experiencia laboral</a>
   <table style="width:80%" border="1"
          class = "table table-striped table-responsive-md">
     <thead>
     <tr>
-      <th>Nro</th>
       <th>Cargo</th>
       <th>Fecha Inicio</th>
       <th>Fecha Culminacion</th>
-      <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="trabajo:${allemplist}">
-      <td th:text="${trabajo.id}"></td>
       <td th:text="${trabajo.cargo}"></td>
       <td th:text="${trabajo.tiempo_inicio}"></td>
       <td th:text="${trabajo.timpo_final}"></td>
-      <td> <a th:href="@{/exp/showFormForUpdate/{id}/{email}(id=${trabajo.id}, email = ${email})}"
-              class="btn btn-primary">Update</a>
-        <a th:href="@{/exp/deleteTrabajo/{id}/{email}(id=${trabajo.id}, email = ${email})}"
-           class="btn btn-danger">Delete</a>
-      </td>
     </tr>
     </tbody>
   </table>
 
   <button type="button">
-    <a href="/end">Registrar experiencia laboral</a>
+    <a href="/admin">Volver</a>
   </button>
 </div>
 </body>

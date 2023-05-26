@@ -84,13 +84,16 @@ public class LoginController {
         if (uname.equals("admin") && pass.equals("12345")) {
             m.addAttribute("uname", uname);
             m.addAttribute("pass", pass);
-
-            List<User> lista = userRepository.findAll();
-            m.addAttribute("allUserlist", lista);
-            return "loginPage";
+            return "redirect:/admin";
         }
         m.addAttribute("error", "Incorrect Username & Password");
 
         return "index";
     }
+
+    @GetMapping("/end")
+    public String end(Model model) {
+        return "welcome";
+    }
+
 }

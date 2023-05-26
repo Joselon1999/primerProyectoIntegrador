@@ -29,8 +29,8 @@ public class RegisterStudiesServiceImpl implements RegisterStudiesService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override public List<Estudio> getAllEstudio(String email)
-    {
+    @Override
+    public List<Estudio> getAllEstudio(String email) {
         List<Estudio> lista = new ArrayList<>();
         List<Long> estudios = new ArrayList<>();
         List<Est_Profesional> p = profesionRepository.findAllByUserEmail(email);

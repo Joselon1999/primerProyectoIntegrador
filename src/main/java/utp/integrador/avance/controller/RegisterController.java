@@ -56,6 +56,7 @@ public class RegisterController {
 
     @PostMapping("/registerUser")
     public String registerUser(Model model, @ModelAttribute User user) {
+        user.setStatus("Pendiente");
         registerService.registerUser(user);
 
         model.addAttribute("email", user.getEmail());

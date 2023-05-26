@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Employee</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+  <h3>Listado de Datos Personales</h3>
+  <table style="width:80%" border="1"
+         class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Tipo documento</th>
+      <th>Documento</th>
+      <th>Paterno</th>
+      <th>Materno</th>
+      <th>Nombres</th>
+      <th>Sexo</th>
+      <th>Telefono Fijo</th>
+      <th>Celular</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="personal:${personales}">
+      <td th:text="${personal.documento.descripcion}"></td>
+      <td th:text="${personal.numero_documento}"></td>
+      <td th:text="${personal.paterno}"></td>
+      <td th:text="${personal.materno}"></td>
+      <td th:text="${personal.nombres}"></td>
+      <td th:text="${personal.sexo.descripcion}"></td>
+      <td th:text="${personal.telef_fijo}"></td>
+      <td th:text="${personal.celular}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="button">
+    <a th:href="@{/admin}">Volver</a>
+  </button>
+</div>
+</body>
+</html>
