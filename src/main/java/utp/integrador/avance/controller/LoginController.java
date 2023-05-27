@@ -25,6 +25,10 @@ public class LoginController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
 
+        documentoRepository.deleteAll();
+        sexoRepository.deleteAll();
+        especialidadRepository.deleteAll();
+        tituloRepository.deleteAll();
         Documento documento = new Documento();
         documento.setDescripcion("DNI");
         documentoRepository.save(documento);
@@ -52,6 +56,12 @@ public class LoginController {
         Especialidad especialidad4 = new Especialidad();
         especialidad4.setDescripcion("Ing.Mecanica");
         especialidadRepository.save(especialidad4);
+        Titulo titulo6 = new Titulo();
+        titulo6.setDescripcion("Capacitado");
+        tituloRepository.save(titulo6);
+        Titulo titulo7 = new Titulo();
+        titulo7.setDescripcion("Estudiante");
+        tituloRepository.save(titulo7);
         Titulo titulo = new Titulo();
         titulo.setDescripcion("Bachiller");
         tituloRepository.save(titulo);
