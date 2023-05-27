@@ -1,4 +1,4 @@
-package utp.integrador.avance.entity;
+package utp.integrador.avance.model;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -6,19 +6,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "exp_laboral")
+@Table(name = "est_profesional")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Exp_Laboral {
+public class Est_Profesional {
 
     @Id
     @GeneratedValue
-    private Long experiencia_id;
+    private Long profesion_id;
 
     @OneToOne
     private User user;
 
     @ManyToOne
-    private Trabajo trabajo;
+    private Estudio estudio;
 }

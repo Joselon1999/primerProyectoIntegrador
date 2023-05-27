@@ -2,8 +2,8 @@ package utp.integrador.avance.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utp.integrador.avance.entity.*;
-import utp.integrador.avance.repository.*;
+import utp.integrador.avance.model.*;
+import utp.integrador.avance.dao.*;
 import utp.integrador.avance.service.RegisterStudiesService;
 
 import java.util.ArrayList;

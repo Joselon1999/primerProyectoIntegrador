@@ -1,10 +1,7 @@
-package utp.integrador.avance.repository;
+package utp.integrador.avance.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import utp.integrador.avance.entity.Especialidad;
-import utp.integrador.avance.entity.Estudio;
-
-import java.util.List;
+import utp.integrador.avance.model.Estudio;
 
 public interface EstudioRepository extends JpaRepository<Estudio, Integer> {
 

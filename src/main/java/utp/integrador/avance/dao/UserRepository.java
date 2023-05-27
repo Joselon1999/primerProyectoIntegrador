@@ -1,9 +1,8 @@
-package utp.integrador.avance.repository;
+package utp.integrador.avance.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import utp.integrador.avance.entity.User;
+import utp.integrador.avance.model.User;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {

@@ -1,8 +1,7 @@
-package utp.integrador.avance.repository;
+package utp.integrador.avance.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import utp.integrador.avance.entity.Estudio;
-import utp.integrador.avance.entity.Trabajo;
+import utp.integrador.avance.model.Trabajo;
 
 public interface TrabajoRepository extends JpaRepository<Trabajo, Integer> {
 

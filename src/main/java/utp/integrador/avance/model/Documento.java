@@ -1,4 +1,4 @@
-package utp.integrador.avance.entity;
+package utp.integrador.avance.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,15 +9,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "especialidad")
+@Table(name = "documento")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Especialidad {
+public class Documento {
 
 
     @Id
     @GeneratedValue
-    private Long especialidad_id;
+    private Long documento_id;
     private String descripcion;
 }

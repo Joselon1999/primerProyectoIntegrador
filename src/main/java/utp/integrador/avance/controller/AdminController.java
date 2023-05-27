@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utp.integrador.avance.entity.*;
-import utp.integrador.avance.repository.*;
 import utp.integrador.avance.service.AdminService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")

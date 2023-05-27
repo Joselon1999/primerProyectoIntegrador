@@ -1,6 +1,6 @@
 package utp.integrador.avance.service;
 
-import utp.integrador.avance.entity.*;
+import utp.integrador.avance.model.*;
 
 import java.util.List;
 

@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utp.integrador.avance.entity.Datos_Personales;
-import utp.integrador.avance.entity.Documento;
-import utp.integrador.avance.entity.Sexo;
-import utp.integrador.avance.entity.User;
+import utp.integrador.avance.model.Datos_Personales;
+import utp.integrador.avance.model.Documento;
+import utp.integrador.avance.model.Sexo;
+import utp.integrador.avance.model.User;
 import utp.integrador.avance.service.RegisterService;
 
 @Controller

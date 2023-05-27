@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utp.integrador.avance.entity.Trabajo;
-import utp.integrador.avance.repository.TrabajoRepository;
+import utp.integrador.avance.model.Trabajo;
 import utp.integrador.avance.service.RegisterExperienceService;
-import utp.integrador.avance.service.RegisterStudiesService;
 
 @Controller
 @RequestMapping(value = "/exp")

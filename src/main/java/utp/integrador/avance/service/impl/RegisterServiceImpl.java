@@ -2,14 +2,14 @@ package utp.integrador.avance.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utp.integrador.avance.entity.Datos_Personales;
-import utp.integrador.avance.entity.Documento;
-import utp.integrador.avance.entity.Sexo;
-import utp.integrador.avance.entity.User;
-import utp.integrador.avance.repository.DatosPersonalesRepository;
-import utp.integrador.avance.repository.DocumentoRepository;
-import utp.integrador.avance.repository.SexoRepository;
-import utp.integrador.avance.repository.UserRepository;
+import utp.integrador.avance.model.Datos_Personales;
+import utp.integrador.avance.model.Documento;
+import utp.integrador.avance.model.Sexo;
+import utp.integrador.avance.model.User;
+import utp.integrador.avance.dao.DatosPersonalesRepository;
+import utp.integrador.avance.dao.DocumentoRepository;
+import utp.integrador.avance.dao.SexoRepository;
+import utp.integrador.avance.dao.UserRepository;
 import utp.integrador.avance.service.RegisterService;
 
 import java.util.List;

@@ -1,8 +1,7 @@
-package utp.integrador.avance.repository;
+package utp.integrador.avance.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import utp.integrador.avance.entity.Especialidad;
-import utp.integrador.avance.entity.Titulo;
+import utp.integrador.avance.model.Especialidad;
 
 public interface EspecialidadRepository extends JpaRepository<Especialidad, Integer> {
 

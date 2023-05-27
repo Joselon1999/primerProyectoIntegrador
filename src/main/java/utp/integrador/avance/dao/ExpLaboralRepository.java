@@ -1,8 +1,7 @@
-package utp.integrador.avance.repository;
+package utp.integrador.avance.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import utp.integrador.avance.entity.Est_Profesional;
-import utp.integrador.avance.entity.Exp_Laboral;
+import utp.integrador.avance.model.Exp_Laboral;
 
 import java.util.List;
 

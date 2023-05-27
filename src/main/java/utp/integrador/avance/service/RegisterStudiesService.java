@@ -1,8 +1,8 @@
 package utp.integrador.avance.service;
 
-import utp.integrador.avance.entity.Especialidad;
-import utp.integrador.avance.entity.Estudio;
-import utp.integrador.avance.entity.Titulo;
+import utp.integrador.avance.model.Especialidad;
+import utp.integrador.avance.model.Estudio;
+import utp.integrador.avance.model.Titulo;
 
 import java.util.List;
 

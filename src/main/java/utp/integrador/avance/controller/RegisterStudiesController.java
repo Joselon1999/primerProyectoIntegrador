@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utp.integrador.avance.entity.Datos_Personales;
-import utp.integrador.avance.entity.Estudio;
+import utp.integrador.avance.model.Estudio;
 import utp.integrador.avance.service.RegisterStudiesService;
 
 @Controller

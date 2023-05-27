@@ -1,9 +1,9 @@
 package utp.integrador.avance.service;
 
-import utp.integrador.avance.entity.Datos_Personales;
-import utp.integrador.avance.entity.Documento;
-import utp.integrador.avance.entity.Sexo;
-import utp.integrador.avance.entity.User;
+import utp.integrador.avance.model.Datos_Personales;
+import utp.integrador.avance.model.Documento;
+import utp.integrador.avance.model.Sexo;
+import utp.integrador.avance.model.User;
 
 import java.util.List;
 

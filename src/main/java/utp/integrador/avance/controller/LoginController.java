@@ -6,10 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import utp.integrador.avance.entity.*;
-import utp.integrador.avance.repository.*;
-
-import java.util.List;
+import utp.integrador.avance.model.*;
+import utp.integrador.avance.dao.*;
 
 @Controller
 public class LoginController {
