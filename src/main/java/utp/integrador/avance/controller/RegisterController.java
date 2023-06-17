@@ -1,6 +1,7 @@
 package utp.integrador.avance.controller;
 
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +11,16 @@ import utp.integrador.avance.model.Documento;
 import utp.integrador.avance.model.Sexo;
 import utp.integrador.avance.model.User;
 import utp.integrador.avance.service.RegisterService;
+import utp.integrador.avance.service.impl.EmailServiceImpl;
 
 @Controller
 public class RegisterController {
 
     @Autowired
-    RegisterService registerService;
+    private RegisterService registerService;
+
+    @Autowired
+    private EmailServiceImpl emailService;
 
     @RequestMapping("/welcome")
     public String registerMessage() {
@@ -55,10 +60,11 @@ public class RegisterController {
     }
 
     @PostMapping("/registerUser")
-    public String registerUser(Model model, @ModelAttribute User user) {
+    public String registerUser(Model model, @ModelAttribute User user) throws MessagingException {
         user.setStatus("Pendiente");
         registerService.registerUser(user);
 
+        emailService.sendSimpleMessage();
         model.addAttribute("email", user.getEmail());
         model.addAttribute("personales", new Datos_Personales());
         model.addAttribute("documentos", registerService.listDocumentos());
