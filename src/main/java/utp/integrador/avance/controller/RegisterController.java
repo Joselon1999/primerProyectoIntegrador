@@ -64,7 +64,7 @@ public class RegisterController {
         user.setStatus("Pendiente");
         registerService.registerUser(user);
 
-        emailService.sendSimpleMessage();
+        emailService.sendSimpleMessage(user.getEmail());
         model.addAttribute("email", user.getEmail());
         model.addAttribute("personales", new Datos_Personales());
         model.addAttribute("documentos", registerService.listDocumentos());

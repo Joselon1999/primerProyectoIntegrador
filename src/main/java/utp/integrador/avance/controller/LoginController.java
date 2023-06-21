@@ -1,13 +1,16 @@
 package utp.integrador.avance.controller;
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import utp.integrador.avance.model.*;
 import utp.integrador.avance.dao.*;
+import utp.integrador.avance.service.impl.EmailServiceImpl;
 
 @Controller
 public class LoginController {
@@ -21,6 +24,9 @@ public class LoginController {
     @Autowired TituloRepository tituloRepository;
 
     @Autowired EstudioRepository estudioRepository;
+
+    @Autowired
+    private EmailServiceImpl emailService;
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
@@ -53,12 +59,6 @@ public class LoginController {
             Especialidad especialidad4 = new Especialidad();
             especialidad4.setDescripcion("Ing.Mecanica");
             especialidadRepository.save(especialidad4);
-            Titulo titulo6 = new Titulo();
-            titulo6.setDescripcion("Capacitado");
-            tituloRepository.save(titulo6);
-            Titulo titulo7 = new Titulo();
-            titulo7.setDescripcion("Estudiante");
-            tituloRepository.save(titulo7);
             Titulo titulo = new Titulo();
             titulo.setDescripcion("Bachiller");
             tituloRepository.save(titulo);
@@ -74,6 +74,12 @@ public class LoginController {
             Titulo titulo5 = new Titulo();
             titulo5.setDescripcion("Maestria");
             tituloRepository.save(titulo5);
+            Titulo titulo6 = new Titulo();
+            titulo6.setDescripcion("Doctor");
+            tituloRepository.save(titulo6);
+            Titulo titulo7 = new Titulo();
+            titulo7.setDescripcion("Tecnico");
+            tituloRepository.save(titulo7);
         }
         return "index";
     }
@@ -98,8 +104,91 @@ public class LoginController {
     }
 
     @GetMapping("/end")
-    public String end(Model model) {
+    public String end(Model model,@PathVariable String email) throws MessagingException {
+        emailService.sendCompleteMessage(email);
         return "welcome";
     }
 
+    /*private void buildEspecialidad() {
+        Especialidad especialidad = new Especialidad();
+        especialidad.setDescripcion("ADMINISTRACIÓN");
+        especialidadRepository.save(especialidad);
+        Especialidad especialidad1 = new Especialidad();
+        especialidad1.setDescripcion("ANTROPOLOGÍA");
+        especialidadRepository.save(especialidad1);
+        Especialidad especialidad4 = new Especialidad();
+        especialidad4.setDescripcion("ARQUITECTURA");
+        especialidadRepository.save(especialidad4);
+        Especialidad especialidad2 = new Especialidad();
+        especialidad2.setDescripcion("CIENCIA POLÍTICA Y GOBIERNO");
+        especialidadRepository.save(especialidad2);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
+        especialidadRepository.save(especialidad3);
+
+        Especialidad especialidad5 = new Especialidad();
+        especialidad5.setDescripcion("CIENCIAS DE LA INFORMACIÓN");
+        especialidadRepository.save(especialidad5);
+        Especialidad especialidad6 = new Especialidad();
+        especialidad6.setDescripcion("CONTABILIDAD");
+        especialidadRepository.save(especialidad6);
+        Especialidad especialidad7 = new Especialidad();
+        especialidad7.setDescripcion("DERECHO");
+        especialidadRepository.save(especialidad7);
+        Especialidad especialidad8 = new Especialidad();
+        especialidad8.setDescripcion("ECONOMÍA");
+        especialidadRepository.save(especialidad8);
+        Especialidad especialidad9 = new Especialidad();
+        especialidad9.setDescripcion("EDUCACIÓN");
+        especialidadRepository.save(especialidad9);
+        Especialidad especialidad10 = new Especialidad();
+        especialidad10.setDescripcion("FILOSOFÍA");
+        especialidadRepository.save(especialidad3);
+        Especialidad especialidad11 = new Especialidad();
+        especialidad11.setDescripcion("FINANZAS");
+        especialidadRepository.save(especialidad11);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("FÍSICA");
+        especialidadRepository.save(especialidad3);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
+        especialidadRepository.save(especialidad3);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
+        especialidadRepository.save(especialidad3);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
+        especialidadRepository.save(especialidad3);
+        Especialidad especialidad3 = new Especialidad();
+        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
+        especialidadRepository.save(especialidad3);
+
+
+
+
+
+                                                                        "GEOGRAFÍA Y MEDIO AMBIENTE"
+                                                                        "HISTORIA"
+                                                                        "IDIOMAS"
+                                                                        "INFORMÁTICA"
+                                                                        "INGENIERÍA CIVIL"
+                                                                        "INGENIERÍA DE INDUSTRIAS ALIMENTARIAS"
+                                                                        "INGENIERÍA DE SISTEMAS"
+                                                                        "INGENIERÍA ELECTRÓNICA"
+                                                                        "INGENIERÍA INDUSTRIAL"
+                                                                        "INGENIERÍA INFORMÁTICA"
+                                                                        "INGENIERÍA MECÁNICA"
+                                                                        "LINGUÍSTICA"
+                                                                        "LITERATURA"
+                                                                        "MARKETING"
+                                                                        "MARKETING DIGITAL"
+                                                                        "MATEMÁTICAS"
+                                                                        "NEGOCIOS INTERNACIONALES"
+                                                                        "OTROS"
+                                                                        "PSICOLOGÍA"
+                                                                        "PUBLICIDAD"
+                                                                        "RECURSOS HUMANOS"
+                                                                        "TURISMO"
+
+    }*/
 }

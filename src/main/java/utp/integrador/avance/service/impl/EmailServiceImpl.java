@@ -13,14 +13,26 @@ public class EmailServiceImpl {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendSimpleMessage() throws MessagingException {
+    public void sendSimpleMessage(String email) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
 
-        message.setFrom("sender@example.com");
-        message.setRecipients(MimeMessage.RecipientType.TO, "recipient@example.com");
-        message.setSubject("Test email from my Springapplication");
+        message.setFrom(email);
+        message.setRecipients(MimeMessage.RecipientType.TO, email);
+        message.setSubject("Bienvenido a ZEGELIPAE");
         message.setText(
-                "This is the test email template for your email:\n%s\n");
+                "Bienvenido a ZEGELIPAE\n");
+        mailSender.send(message);
+    }
+
+
+    public void sendCompleteMessage(String email) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+
+        message.setFrom(email);
+        message.setRecipients(MimeMessage.RecipientType.TO, email);
+        message.setSubject("ZEGELIPAE: Registro completado");
+        message.setText(
+                "Tu registro se ha completado\n");
         mailSender.send(message);
     }
 }
