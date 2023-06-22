@@ -19,6 +19,9 @@ public class AdminServiceImpl implements AdminService {
     @Autowired ExpLaboralRepository laboralRepository;
     @Autowired TrabajoRepository trabajoRepository;
 
+
+    @Autowired private PuestoRepository repository;
+
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -64,6 +67,11 @@ public class AdminServiceImpl implements AdminService {
         User user = userRepository.findByEmail(email).orElse(new User());
         user.setStatus(status);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<Puesto_Docente> listPuestos() {
+        return repository.findAllByOrderByEstadoAsc();
     }
 }
 

@@ -16,7 +16,7 @@
            class = "table table-striped table-responsive-md">
         <thead>
         <tr>
-            <th>id</th>
+            <th>Nro</th>
             <th>Email</th>
             <th>Datos personales</th>
             <th>Estudios profesionales</th>
@@ -37,9 +37,34 @@
                    class="btn btn-secondary" style="color:white">Ver</a></td>
             <td th:text="${user.status}"></td>
             <td><a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
-                    class="btn btn-primary" style="color:white">Aprobar</a>
+                   class="btn btn-primary" style="color:white">Aprobar</a>
                 <a th:href="@{/admin/rechazar/{email}(email=${user.email})}"
                    class="btn btn-danger" style="color:white">Rechazar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container my-2" align="center">
+
+    <h3>Listado de Puestos de Trabajo</h3>
+    <table style="width:90%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Nro</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="puesto:${allPuestolist}">
+            <td th:text="${puesto.id}"></td>
+            <td th:text="${puesto.descripcion}"></td>
+            <td th:text="${puesto.estado}"></td>
+            <td><a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+                   class="btn btn-primary" style="color:white">Modificar</a></td>
         </tr>
         </tbody>
     </table>

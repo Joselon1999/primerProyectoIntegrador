@@ -15,5 +15,7 @@ public interface AdminService {
     List<Trabajo> getAllTrabajo(String email);
 
     void updateUserStatus(String email,String status);
+
+    List<Puesto_Docente> listPuestos();
 }
 

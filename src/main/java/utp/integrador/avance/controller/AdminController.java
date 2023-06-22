@@ -11,11 +11,12 @@ import utp.integrador.avance.service.AdminService;
 public class AdminController {
 
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @GetMapping
     public String end(Model model) {
         model.addAttribute("allUserlist", adminService.getAllUsers());
+        model.addAttribute("allPuestolist", adminService.listPuestos());
         return "loginPage";
     }
 
