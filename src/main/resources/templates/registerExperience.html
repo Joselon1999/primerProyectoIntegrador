@@ -40,7 +40,9 @@
   </table>
 
   <button type="button">
-    <a href="/end/{email}(email = ${email})">Registrar experiencia laboral</a>
+
+    <a th:href="@{/end/{email}(email = ${email})}"
+       class="btn btn-danger">Registrar experiencia laboral</a>
   </button>
 </div>
 </body>
