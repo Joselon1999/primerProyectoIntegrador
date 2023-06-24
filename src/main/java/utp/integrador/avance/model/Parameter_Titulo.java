@@ -21,4 +21,6 @@ public class Parameter_Titulo {
 
     @ManyToOne
     private Puesto_Docente puestoDocente;
+
+    private double puntaje;
 }

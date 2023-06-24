@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Registro</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<form method="post" th:action="@{/admin/puestoTrabajo/save}" th:object="${puesto}" class="col card p-3 mb-5">
+
+  <input type="hidden" th:field="*{id}" />
+  <div class="form-group">
+    <label for="descripcion">Descripción de Puesto de Trabajo</label>
+    <input id="descripcion" placeholder="Ingrese descripcion" required type="text" th:field="*{descripcion}"
+           class="form-control"/>
+  </div>
+
+  </div>
+  <div class="form-group">
+    <label for="estado">Estado</label>
+    <input id="estado" placeholder="Ingrese estado" required type="text" th:field="*{estado}"
+           class="form-control"/>
+  </div>
+  <button type="submit" class="btn btn-info col-2">Registrar parametrizacion</button>
+</form>
+
+  <h3>Parametros por Especialidad Profesional</h3>
+  <a th:href="@{/admin/puestoTrabajo/param_esp/{id}(id=${puesto.id})}"
+     class="btn btn-primary" style="color:white;width:200px">Agregar</a>
+  <table style="width:90%" border="1"
+         class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Nro</th>
+      <th>Descripcion</th>
+      <th>Puntaje</th>
+      <th>Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="especialidad:${especialidades}">
+      <td th:text="${especialidad.id}"></td>
+      <td th:text="${especialidad.especialidad.descripcion}"></td>
+      <td th:text="${especialidad.puntaje}"></td>
+      <td><!--<a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+             class="btn btn-primary" style="color:white">Modificar</a>
+        <a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+           class="btn btn-danger" style="color:white">Borrar</a>--></td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+  <h3>Parametros por Titulo Profesional</h3>
+  <a th:href="@{/admin/puestoTrabajo/param_tit/{id}(id=${puesto.id})}"
+     class="btn btn-primary" style="color:white;width:200px">Agregar</a>
+  <table style="width:90%" border="1"
+         class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Nro</th>
+      <th>Descripcion</th>
+      <th>Puntaje</th>
+      <th>Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="titulo:${titulos}">
+      <td th:text="${titulo.id}"></td>
+      <td th:text="${titulo.titulo.descripcion}"></td>
+      <td th:text="${titulo.puntaje}"></td>
+      <td><!--<a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+             class="btn btn-primary" style="color:white">Modificar</a>
+        <a th:href="@{/admin/aprobar/{email}(email=${user.email})}"
+           class="btn btn-danger" style="color:white">Borrar</a>--></td>
+    </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

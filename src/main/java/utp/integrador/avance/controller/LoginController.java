@@ -25,6 +25,12 @@ public class LoginController {
 
     @Autowired EstudioRepository estudioRepository;
 
+    @Autowired private ParameterEspecialidadRepository pespecialidadRepository;
+
+    @Autowired private ParameterTituloRepository ptituloRepository;
+
+    @Autowired private PuestoRepository repository;
+
     @Autowired
     private EmailServiceImpl emailService;
 
@@ -80,6 +86,20 @@ public class LoginController {
             Titulo titulo7 = new Titulo();
             titulo7.setDescripcion("Tecnico");
             tituloRepository.save(titulo7);
+            Puesto_Docente puestoDocente = new Puesto_Docente();
+            puestoDocente.setDescripcion("Profesor de Inteligencia Artificial");
+            puestoDocente.setEstado("Abierto");
+            repository.save(puestoDocente);
+            Parameter_Especialidad pes = new Parameter_Especialidad();
+            pes.setEspecialidad(especialidad);
+            pes.setPuntaje(1);
+            pes.setPuestoDocente(puestoDocente);
+            pespecialidadRepository.save(pes);
+            Parameter_Titulo pti = new Parameter_Titulo();
+            pti.setTitulo(titulo);
+            pti.setPuntaje(3);
+            pti.setPuestoDocente(puestoDocente);
+            ptituloRepository.save(pti);
         }
         return "index";
     }
@@ -103,7 +123,7 @@ public class LoginController {
         return "index";
     }
 
-    @GetMapping("/end")
+    @GetMapping("/end/{email}")
     public String end(Model model,@PathVariable String email) throws MessagingException {
         emailService.sendCompleteMessage(email);
         return "welcome";

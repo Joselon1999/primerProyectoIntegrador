@@ -22,4 +22,6 @@ public class Parameter_Especialidad {
 
     @ManyToOne
     private Puesto_Docente puestoDocente;
+
+    private double puntaje;
 }

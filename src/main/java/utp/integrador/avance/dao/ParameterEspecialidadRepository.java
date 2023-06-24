@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ParameterEspecialidadRepository extends JpaRepository<Parameter_Especialidad, Integer> {
 
-    List<Parameter_Especialidad> findAllById(Integer id);
+    List<Parameter_Especialidad> findAllByPuestoDocenteId(Integer id);
 }
 

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ParameterTituloRepository extends JpaRepository<Parameter_Titulo, Integer> {
 
-    List<Parameter_Titulo> findAllById(Integer id);
+    List<Parameter_Titulo> findAllByPuestoDocenteId(Integer id);
 }
 
