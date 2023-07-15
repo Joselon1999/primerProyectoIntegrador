@@ -25,6 +25,12 @@ public class LoginController {
 
     @Autowired EstudioRepository estudioRepository;
 
+    @Autowired DatosPersonalesRepository personalesRepository;
+
+    @Autowired EstProfesionRepository profesionRepository;
+
+    @Autowired ExpLaboralRepository laboralRepository;
+
     @Autowired private ParameterEspecialidadRepository pespecialidadRepository;
 
     @Autowired private ParameterTituloRepository ptituloRepository;
@@ -100,6 +106,53 @@ public class LoginController {
             pti.setPuntaje(3);
             pti.setPuestoDocente(puestoDocente);
             ptituloRepository.save(pti);
+            User user1 = new User();
+            user1.setEmail("josesuperxp20@gmail.com");
+            user1.setPassword("Ugabuga");
+            user1.setStatus("Pendiente");
+            User user2 = new User();
+            user2.setEmail("joselon1999@hotmail.com");
+            user2.setPassword("Ugabuga");
+            user2.setStatus("Pendiente");
+            userRepository.save(user1);
+            userRepository.save(user2);
+            Datos_Personales d1 = new Datos_Personales();
+            d1.setMaterno("Morales");
+            d1.setPaterno("Torrejon");
+            d1.setNombres("Jose");
+            d1.setUser(user1);
+            personalesRepository.save(d1);
+            Estudio estudio = new Estudio();
+            estudio.setEspecialidad(especialidad);
+            estudio.setTitulo(titulo);
+            estudioRepository.save(estudio);
+            Est_Profesional e1 = new Est_Profesional();
+            e1.setUser(user1);
+            e1.setEstudio(estudio);
+            profesionRepository.save(e1);
+            Estudio estudio2 = new Estudio();
+            estudio2.setEspecialidad(especialidad2);
+            estudio2.setTitulo(titulo2);
+            estudioRepository.save(estudio2);
+            Est_Profesional e2 = new Est_Profesional();
+            e2.setUser(user1);
+            e2.setEstudio(estudio2);
+            profesionRepository.save(e2);
+
+            Datos_Personales d2 = new Datos_Personales();
+            d2.setMaterno("Morales");
+            d2.setPaterno("Torrejon");
+            d2.setNombres("Francisco");
+            d2.setUser(user2);
+            personalesRepository.save(d2);
+            Estudio estudio1 = new Estudio();
+            estudio1.setEspecialidad(especialidad3);
+            estudio1.setTitulo(titulo3);
+            estudioRepository.save(estudio1);
+            Est_Profesional e3 = new Est_Profesional();
+            e3.setUser(user2);
+            e3.setEstudio(estudio1);
+            profesionRepository.save(e3);
         }
         return "index";
     }

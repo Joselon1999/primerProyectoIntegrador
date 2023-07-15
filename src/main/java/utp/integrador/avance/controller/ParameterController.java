@@ -63,4 +63,10 @@ public class ParameterController {
         parameterService.saveParamTit(titulo,id);
         return "redirect:/admin/puestoTrabajo/get/"+id;
     }
+
+    @GetMapping("/results/{id}")
+    public String endResults(@PathVariable Integer id,Model model) {
+        model.addAttribute("allUserlist", parameterService.getAllUsers(id));
+        return "listResults";
+    }
 }

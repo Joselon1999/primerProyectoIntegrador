@@ -22,4 +22,6 @@ public interface ParameterService {
     Parameter_Especialidad saveParamEsp(Parameter_Especialidad especialidad, Integer id);
 
     Parameter_Titulo saveParamTit(Parameter_Titulo titulo, Integer id);
+
+    List<UserPuntaje> getAllUsers(Integer id);
 }

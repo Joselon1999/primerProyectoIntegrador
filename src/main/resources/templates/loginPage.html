@@ -66,6 +66,8 @@
             <td th:text="${puesto.descripcion}"></td>
             <td th:text="${puesto.estado}"></td>
             <td><a th:href="@{/admin/puestoTrabajo/get/{id}(id=${puesto.id})}"
+                   class="btn btn-primary" style="color:white">Modificar</a>
+                <a th:href="@{/admin/puestoTrabajo/results/{id}(id=${puesto.id})}"
                    class="btn btn-primary" style="color:white">Modificar</a></td>
         </tr>
         </tbody>
