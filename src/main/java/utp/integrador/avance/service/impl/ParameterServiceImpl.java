@@ -147,4 +147,25 @@ public class ParameterServiceImpl implements ParameterService {
         Collections.sort(userPuntaje, (o1, o2) -> (int) (o2.getPuntaje() - o1.getPuntaje()));
         return userPuntaje;
     }
+
+    @Override
+    public User getCurrentUser(Integer userId) {
+        return userRepository.findById(userId)
+                .orElse(new User());
+    }
+
+    @Override
+    public Datos_Personales getCurrentPersonales(String userId) {
+        return datosPersonalesRepository.findByUserEmail(userId);
+    }
+
+    @Override
+    public List<Est_Profesional> getCurrentProfesional(String userId) {
+        return profesionRepository.findAllByUserEmail(userId);
+    }
+
+    @Override
+    public List<Exp_Laboral> getCurrentLaboral(String userId) {
+        return laboralRepository.findAllByUserEmail(userId);
+    }
 }

@@ -24,4 +24,12 @@ public interface ParameterService {
     Parameter_Titulo saveParamTit(Parameter_Titulo titulo, Integer id);
 
     List<UserPuntaje> getAllUsers(Integer id);
+
+    User getCurrentUser(Integer userId);
+
+    Datos_Personales getCurrentPersonales(String userId);
+
+    List<Est_Profesional> getCurrentProfesional(String userId);
+
+    List<Exp_Laboral> getCurrentLaboral(String userId);
 }

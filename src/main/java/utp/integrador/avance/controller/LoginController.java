@@ -120,6 +120,11 @@ public class LoginController {
             d1.setMaterno("Morales");
             d1.setPaterno("Torrejon");
             d1.setNombres("Jose");
+            d1.setCelular("999999999");
+            d1.setDocumento(documento);
+            d1.setNumero_documento("77777777");
+            d1.setTelef_fijo("5050505");
+            d1.setSexo(sexo1);
             d1.setUser(user1);
             personalesRepository.save(d1);
             Estudio estudio = new Estudio();

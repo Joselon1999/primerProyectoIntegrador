@@ -20,6 +20,7 @@
             <th>Email</th>
             <th>Estado</th>
             <th>Puntaje</th>
+            <th>CV</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,8 @@
             <td th:text="${postulante.user.email}"></td>
             <td th:text="${postulante.user.status}"></td>
             <td th:text="${postulante.puntaje}"></td>
+            <td><a th:href="@{/admin/puestoTrabajo/cv/{id}(id=${postulante.user.userId})}"
+                   class="btn btn-danger" style="color:white">Ver Informacion</a></td>
         </tr>
         </tbody>
     </table>

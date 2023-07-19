@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utp.integrador.avance.model.Estudio;
-import utp.integrador.avance.model.Parameter_Especialidad;
-import utp.integrador.avance.model.Parameter_Titulo;
-import utp.integrador.avance.model.Puesto_Docente;
+import utp.integrador.avance.model.*;
 import utp.integrador.avance.service.ParameterService;
 
 @Controller
@@ -68,5 +65,15 @@ public class ParameterController {
     public String endResults(@PathVariable Integer id,Model model) {
         model.addAttribute("allUserlist", parameterService.getAllUsers(id));
         return "listResults";
+    }
+
+    @GetMapping("/cv/{userId}")
+    public String getCvUser(@PathVariable Integer userId,Model model) {
+        User usuario = parameterService.getCurrentUser(userId);
+        model.addAttribute("user", usuario);
+        model.addAttribute("personal", parameterService.getCurrentPersonales(usuario.getEmail()));
+        model.addAttribute("estudios", parameterService.getCurrentProfesional(usuario.getEmail()));
+        model.addAttribute("experiencias", parameterService.getCurrentLaboral(usuario.getEmail()));
+        return "cvResults";
     }
 }

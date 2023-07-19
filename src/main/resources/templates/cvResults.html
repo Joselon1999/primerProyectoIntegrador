@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Test Bed Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link th:href="apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="../static/css/cvStyle.css" th:href="@{/css/cvStyle.css}"  type="text/css"  rel="stylesheet">
+</head>
+<body>
+<header class="header container-fluid">
+    <table>
+        <tr>
+            <td class="info-middle">
+                <h1 th:text="|${personal.paterno} ${personal.materno} ${personal.nombres}|" />
+            </td>
+            <td class="info-small text-right info-middle">
+                <p>Aca boton para imprimir CV</p>
+                <p th:text="${user.email}"/>
+            </td>
+        </tr>
+    </table>
+</header>
+
+<div class="container">
+    <!-- Objective Section -->
+    <table>
+        <tr>
+            <td>
+                <h2 class="sec-label">Datos Personales</h2>
+            </td>
+            <td>
+                <h3></h3>
+                <ul>
+                    <li th:text="|Documento: ${personal.documento.descripcion}|" />
+                    <li th:text="|Nro Documento: ${personal.numero_documento}|" />
+                    <li th:text="|Genero: ${personal.sexo.descripcion}|" />
+                    <li>jQuery</li>
+                    <li>PHP</li>
+                    <li>MySQL</li>
+                </ul>
+            </td>
+            <td>
+                <h3></h3>
+                <ul>
+                    <li>Git/Github</li>
+                    <li>SASS/SCSS</li>
+                    <li>Wordpress</li>
+                    <li>Bootstrap</li>
+                    <li>CSS Grid</li>
+                    <li>Photoshop</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <hr class="section-break">
+    <!-- Education Section -->
+    <table>
+        <tr>
+            <td class="edu">
+                <h2 class="sec-label">Education</h2>
+            </td>
+            <td class="content-education">
+                <h3>2017 Jefferson State Community College</h3>
+                <p>Course: Full-Stack Web Development Certification Program</p>
+                <p>Achievement: Team Lead for Full-Stack webiste build</p>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content-education">
+                <h3>2010 - 2014 University of Alabama at Birmingham</h3>
+                <p>Course: BS Degree in Healthcare Management</p>
+                <p>Achievement: Dean List</p>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content-education">
+                <h3>2004 - 2008 Auburn University</h3>
+                <p>Course: BS in Nursing (136 credit hours completed-transferred)</p>
+            </td>
+            <td class="location">
+                <h3>Auburn, AL</h3>
+            </td>
+        </tr>
+    </table>
+    <hr class="section-break">
+    <!-- Work Experience Section -->
+    <table>
+        <tr>
+            <td>
+                <h2 class="sec-label">Work Experience</h2>
+            </td>
+            <td class="content">
+                <h3>09/2015 - Present &nbsp; &nbsp;<span><strong>Carr Allison Medicare Compliance Group</strong></span></h3>
+                <h3>Medicare Set-Aside Allocation Specialist</h3>
+                <ul>
+                    <li>Analyzed claimant medical case files for allocation reports utilizing MS Access, Excel, Word, and various web-based applications.</li>
+                    <li>Acted as a liaison between clients and in-house staff to analyze needs and requests of clients.</li>
+                    <li>Gathered Medicare guidelines and requirements in order to provide Medicare compliant advice on expected future treatment needs.</li>
+                    <li>Performed cost analysis of prior treatment and created cost estimates for Medicare set-asides using Medicare and state fee schedules</li>
+                    <li>Performed quality checks of Medicare Set-Aside drafts before delivering to clients.</li>
+                    <li>Met departmental goals by properly prioritizing and delegating tasks to team members in order to ensure timely completion of case files.</li>
+                </ul>
+            </td>
+            <td class="location">
+                <h3>Vestavia, AL</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content">
+                <h3>11/2014 - 04/2015  &nbsp; &nbsp;<span><strong>N.A.I. Personnel contracted to Cahaba G.B.A.</strong></span></h3>
+                <h3>Business Analyst</h3>
+                <ul>
+                    <li>Analyzed, on average, six provider cost reports an hour, outpacing the departmental target by 300%</li>
+                    <li>Conducted accounting audits of cost reports ranging into the $100millions with strict adherence to CMS deadlines</li>
+                    <li>Spearheaded monthly provider correspondence program for dept., dispatching upwards 2,500 pieces per month</li>
+                    <li>Executed threshold analysis and prepared tentative settlements with a significant understanding of Excel</li>
+                </ul>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content">
+                <h3>01/2014 - 04/2014 &nbsp; &nbsp;<span><strong>Outpatient Care Center an SCA Affiliate</strong></span></h3>
+                <h3>Administrative Intern</h3>
+                <ul>
+                    <li>Troubleshot and improved problem areas of surgery center which allowed us to achieve reaccreditation by the AAAHC</li>
+                    <li>Saved $1000s by performing cost analysis of common supplies and renegotiated vendor contracts for better pricing</li>
+                    <li>Generated new revenues by conducting reimbursement analysis and revamping private-pay structures</li>
+                    <li>Completed policy overhaul to ensure the facility complied with current industry standards</li>
+                    <li>Oversaw and counseled department managers in order to cultivate profitable business operations</li>
+                </ul>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content">
+                <h3>06/2013 - 10/2015 &nbsp; &nbsp;<span><strong>St. Vincent's Hospital Birmingham</strong></span></h3>
+                <h3>Administrative Assistant</h3>
+                <ul>
+                    <li>Coordinated the staffing transition from an outside staffing agency to in-house employees which saved $1000s in personnel management fees</li>
+                    <li>Developed a new system to maintain credentialing and competencies of float pool staff by utilizing Microsoft Excel</li>
+                    <li>Analyzed and eliminated wasteful interoffice processes which cut $100s in supplies expenses</li>
+                    <li>Sought training for “super-user” status of hospital computer systems and educated nursing staff with computerized order entry</li>
+                    <li>Collaborated with the Nursing House Supervisor to manage overnight operations</li>
+                </ul>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <!--null space-->
+            </td>
+            <td class="content">
+                <h3>07/2010 - 06/2013 &nbsp; &nbsp;<span><strong>St. Vincent's Hospital Birmingham</strong></span></h3>
+                <h3>Unit Secretary</h3>
+                <ul>
+                    <li>Improved patient satisfaction ratings several percentage points by resolving patient requests and complaints in a timely manner</li>
+                    <li>Maintained departmental budget surplus through carefully monitoring supply inventories and eliminating unnecessary expenses</li>
+                    <li>Boosted operational performance by effectively delegating workflow tasks to staff</li>
+                    <li>Trained all new employees to a functional understanding of departmental computer programs and processes</li>
+                </ul>
+            </td>
+            <td class="location">
+                <h3>Birmingham, AL</h3>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+</html>
