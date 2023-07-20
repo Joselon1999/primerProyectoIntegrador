@@ -29,7 +29,7 @@ public interface ParameterService {
 
     Datos_Personales getCurrentPersonales(String userId);
 
-    List<Est_Profesional> getCurrentProfesional(String userId);
+    List<Estudio> getCurrentProfesional(String userId);
 
-    List<Exp_Laboral> getCurrentLaboral(String userId);
+    List<Trabajo> getCurrentLaboral(String userId);
 }

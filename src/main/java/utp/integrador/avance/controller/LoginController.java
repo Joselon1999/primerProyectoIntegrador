@@ -37,6 +37,8 @@ public class LoginController {
 
     @Autowired private PuestoRepository repository;
 
+    @Autowired TrabajoRepository trabajoRepository;
+
     @Autowired
     private EmailServiceImpl emailService;
 
@@ -130,6 +132,8 @@ public class LoginController {
             Estudio estudio = new Estudio();
             estudio.setEspecialidad(especialidad);
             estudio.setTitulo(titulo);
+            estudio.setCiudad("Lima");
+            estudio.setFecha_culmina("2023-06-28");
             estudioRepository.save(estudio);
             Est_Profesional e1 = new Est_Profesional();
             e1.setUser(user1);
@@ -138,11 +142,22 @@ public class LoginController {
             Estudio estudio2 = new Estudio();
             estudio2.setEspecialidad(especialidad2);
             estudio2.setTitulo(titulo2);
+            estudio2.setCiudad("Lima");
+            estudio2.setFecha_culmina("2023-06-28");
             estudioRepository.save(estudio2);
             Est_Profesional e2 = new Est_Profesional();
             e2.setUser(user1);
             e2.setEstudio(estudio2);
             profesionRepository.save(e2);
+            Exp_Laboral laboral = new Exp_Laboral();
+            Trabajo t1 = new Trabajo();
+            t1.setCargo("Analista de sistemas");
+            t1.setTiempo_inicio("2022-06-28");
+            t1.setTimpo_final("2023-06-28");
+            trabajoRepository.save(t1);
+            laboral.setUser(user1);
+            laboral.setTrabajo(t1);
+            laboralRepository.save(laboral);
 
             Datos_Personales d2 = new Datos_Personales();
             d2.setMaterno("Morales");
@@ -186,87 +201,4 @@ public class LoginController {
         emailService.sendCompleteMessage(email);
         return "welcome";
     }
-
-    /*private void buildEspecialidad() {
-        Especialidad especialidad = new Especialidad();
-        especialidad.setDescripcion("ADMINISTRACIÓN");
-        especialidadRepository.save(especialidad);
-        Especialidad especialidad1 = new Especialidad();
-        especialidad1.setDescripcion("ANTROPOLOGÍA");
-        especialidadRepository.save(especialidad1);
-        Especialidad especialidad4 = new Especialidad();
-        especialidad4.setDescripcion("ARQUITECTURA");
-        especialidadRepository.save(especialidad4);
-        Especialidad especialidad2 = new Especialidad();
-        especialidad2.setDescripcion("CIENCIA POLÍTICA Y GOBIERNO");
-        especialidadRepository.save(especialidad2);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
-        especialidadRepository.save(especialidad3);
-
-        Especialidad especialidad5 = new Especialidad();
-        especialidad5.setDescripcion("CIENCIAS DE LA INFORMACIÓN");
-        especialidadRepository.save(especialidad5);
-        Especialidad especialidad6 = new Especialidad();
-        especialidad6.setDescripcion("CONTABILIDAD");
-        especialidadRepository.save(especialidad6);
-        Especialidad especialidad7 = new Especialidad();
-        especialidad7.setDescripcion("DERECHO");
-        especialidadRepository.save(especialidad7);
-        Especialidad especialidad8 = new Especialidad();
-        especialidad8.setDescripcion("ECONOMÍA");
-        especialidadRepository.save(especialidad8);
-        Especialidad especialidad9 = new Especialidad();
-        especialidad9.setDescripcion("EDUCACIÓN");
-        especialidadRepository.save(especialidad9);
-        Especialidad especialidad10 = new Especialidad();
-        especialidad10.setDescripcion("FILOSOFÍA");
-        especialidadRepository.save(especialidad3);
-        Especialidad especialidad11 = new Especialidad();
-        especialidad11.setDescripcion("FINANZAS");
-        especialidadRepository.save(especialidad11);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("FÍSICA");
-        especialidadRepository.save(especialidad3);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
-        especialidadRepository.save(especialidad3);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
-        especialidadRepository.save(especialidad3);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
-        especialidadRepository.save(especialidad3);
-        Especialidad especialidad3 = new Especialidad();
-        especialidad3.setDescripcion("CIENCIAS DE LA COMUNICACIÓN");
-        especialidadRepository.save(especialidad3);
-
-
-
-
-
-                                                                        "GEOGRAFÍA Y MEDIO AMBIENTE"
-                                                                        "HISTORIA"
-                                                                        "IDIOMAS"
-                                                                        "INFORMÁTICA"
-                                                                        "INGENIERÍA CIVIL"
-                                                                        "INGENIERÍA DE INDUSTRIAS ALIMENTARIAS"
-                                                                        "INGENIERÍA DE SISTEMAS"
-                                                                        "INGENIERÍA ELECTRÓNICA"
-                                                                        "INGENIERÍA INDUSTRIAL"
-                                                                        "INGENIERÍA INFORMÁTICA"
-                                                                        "INGENIERÍA MECÁNICA"
-                                                                        "LINGUÍSTICA"
-                                                                        "LITERATURA"
-                                                                        "MARKETING"
-                                                                        "MARKETING DIGITAL"
-                                                                        "MATEMÁTICAS"
-                                                                        "NEGOCIOS INTERNACIONALES"
-                                                                        "OTROS"
-                                                                        "PSICOLOGÍA"
-                                                                        "PUBLICIDAD"
-                                                                        "RECURSOS HUMANOS"
-                                                                        "TURISMO"
-
-    }*/
 }

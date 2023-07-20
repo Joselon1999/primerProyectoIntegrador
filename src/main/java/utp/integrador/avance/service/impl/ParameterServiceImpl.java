@@ -41,6 +41,10 @@ public class ParameterServiceImpl implements ParameterService {
     @Autowired
     private ExpLaboralRepository laboralRepository;
 
+    @Autowired EstudioRepository estudioRepository;
+
+    @Autowired TrabajoRepository trabajoRepository;
+
     @Override
     public List<Puesto_Docente> listPuestos() {
         return repository.findAll();
@@ -160,12 +164,31 @@ public class ParameterServiceImpl implements ParameterService {
     }
 
     @Override
-    public List<Est_Profesional> getCurrentProfesional(String userId) {
-        return profesionRepository.findAllByUserEmail(userId);
+    public List<Estudio> getCurrentProfesional(String userId) {
+        List<Estudio> lista = new ArrayList<>();
+        List<Long> estudios = new ArrayList<>();
+        List<Est_Profesional> p = profesionRepository.findAllByUserEmail(userId);
+        for (int i = 0; i<p.size(); i++) {
+            estudios.add(p.get(i).getEstudio().getId());
+        }
+        for (int j = 0; j<p.size(); j++) {
+            lista.add(estudioRepository.findById(estudios.get(j)));
+        }
+        return lista;
     }
 
     @Override
-    public List<Exp_Laboral> getCurrentLaboral(String userId) {
-        return laboralRepository.findAllByUserEmail(userId);
+    public List<Trabajo> getCurrentLaboral(String userId) {
+        List<Trabajo> lista = new ArrayList<>();
+        List<Long> exp = new ArrayList<>();
+        List<Exp_Laboral> p = laboralRepository.findAllByUserEmail(userId);
+        for (int i = 0; i<p.size(); i++) {
+            exp.add(p.get(i).getTrabajo().getId());
+        }
+        for (int j = 0; j<p.size(); j++) {
+            lista.add(trabajoRepository.findById(exp.get(j)));
+        }
+
+        return lista;
     }
 }
