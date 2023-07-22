@@ -1,38 +1,447 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Employee</title>
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+
+  <title>Experiencias Laborales</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/bootstrap-material-design.css" rel="stylesheet">
+  <link href="./css/OLDmain.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="./Scripts/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/kendo-ui-core/2014.1.416/js/cultures/kendo.culture.es-ES.min.js"></script>
+
+  <script src="./Scripts/hammer.min.js"></script>
+  <script src="./Scripts/jquery.hammer.js"></script>
+  <script src="./Scripts/material.js"></script>
+
+  <script src="./Scripts/masonry.min.js"></script>
+  <script src="./Scripts/main.js"></script>
+
+
+
+  <style type="text/css">
+      .k-buttonIpae {
+          color: #fff;
+          border-color: #fff;
+          background-color: #00629b;
+      }
+
+
+      .mdl-button {
+          -webkit-tap-highlight-color: transparent;
+          -webkit-tap-highlight-color: rgba(255,255,255,0);
+      }
+
+
+          .mdl-button .mdl-badge[data-badge]:after {
+              top: -10px;
+              right: -5px;
+          }
+
+      .mdl-badge.mdl-badge--no-background[data-badge]:after {
+          color: rgb(255,82,82);
+          background: rgba(255,255,255,.2);
+          box-shadow: 0 0 1px gray;
+      }
+
+      .mdl-button {
+          background: 0 0;
+          border: none;
+          border-radius: 2px;
+          color: #000;
+          display: block;
+          position: relative;
+          height: 26px; /*36px*/
+          min-width: 54px; /*64px*/
+          padding: 0 8px;
+          display: inline-block;
+          font-family: "Roboto","Helvetica","Arial",sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0;
+          overflow: hidden;
+          will-change: box-shadow,transform;
+          -webkit-transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+          transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+          outline: none;
+          cursor: pointer;
+          text-decoration: none;
+          text-align: center;
+          line-height: 36px;
+          vertical-align: middle;
+      }
+
+          .mdl-button::-moz-focus-inner {
+              border: 0;
+          }
+
+          .mdl-button:hover {
+              background-color: rgba(158,158,158,.2);
+          }
+
+          .mdl-button:focus:not(:active) {
+              background-color: rgba(0,0,0,.12);
+          }
+
+          .mdl-button:active {
+              background-color: rgba(158,158,158,.4);
+          }
+
+          .mdl-button.mdl-button--colored {
+              color: rgb(0,150,136);
+          }
+
+              .mdl-button.mdl-button--colored:focus:not(:active) {
+                  background-color: rgba(0,0,0,.12);
+              }
+
+      input.mdl-button[type="submit"] {
+          -webkit-appearance: none;
+      }
+
+      .mdl-button--raised {
+          background: rgba(158,158,158,.2);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+      }
+
+          .mdl-button--raised:active {
+              box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+              background-color: rgba(158,158,158,.4);
+          }
+
+          .mdl-button--raised:focus:not(:active) {
+              box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+              background-color: rgba(158,158,158,.4);
+          }
+
+          .mdl-button--raised.mdl-button--colored {
+              background: rgb(0,150,136);
+              color: rgb(255,255,255);
+          }
+
+              .mdl-button--raised.mdl-button--colored:hover {
+                  background-color: rgb(0,150,136);
+              }
+
+              .mdl-button--raised.mdl-button--colored:active {
+                  background-color: rgb(0,150,136);
+              }
+
+              .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+                  background-color: rgb(0,150,136);
+              }
+
+              .mdl-button--raised.mdl-button--colored .mdl-ripple {
+                  background: rgb(255,255,255);
+              }
+
+      .mdl-button--fab {
+          border-radius: 50%;
+          font-size: 24px;
+          height: 56px;
+          margin: auto;
+          min-width: 30px; /*56px*/
+          width: 30px; /*56px*/
+          height: 30px;
+          padding: 0;
+          overflow: hidden;
+          background: rgba(158,158,158,.2);
+          box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+          position: relative;
+          line-height: normal;
+      }
+
+          .mdl-button--fab .material-icons {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-12px,-12px);
+              -ms-transform: translate(-12px,-12px);
+              transform: translate(-12px,-12px);
+              line-height: 24px;
+              width: 24px;
+          }
+
+          .mdl-button--fab.mdl-button--mini-fab {
+              height: 20px;
+              min-width: 20px;
+              width: 20px;
+          }
+
+          .mdl-button--fab .mdl-button__ripple-container {
+              border-radius: 50%;
+              -webkit-mask-image: -webkit-radial-gradient(circle,#fff,#000);
+          }
+
+          .mdl-button--fab:active {
+              box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+              background-color: rgba(158,158,158,.4);
+          }
+
+          .mdl-button--fab:focus:not(:active) {
+              box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+              background-color: rgba(158,158,158,.4);
+          }
+
+          .mdl-button--fab.mdl-button--colored {
+              background: rgb(255,82,82);
+              color: rgb(255,255,255);
+          }
+
+              .mdl-button--fab.mdl-button--colored:hover {
+                  background-color: rgb(255,82,82);
+              }
+
+              .mdl-button--fab.mdl-button--colored:focus:not(:active) {
+                  background-color: rgb(255,82,82);
+              }
+
+              .mdl-button--fab.mdl-button--colored:active {
+                  background-color: rgb(255,82,82);
+              }
+
+              .mdl-button--fab.mdl-button--colored .mdl-ripple {
+                  background: rgb(255,255,255);
+              }
+
+      .mdl-button--icon {
+          border-radius: 50%;
+          font-size: 24px;
+          height: 32px;
+          margin-left: 0;
+          margin-right: 0;
+          min-width: 32px;
+          width: 32px;
+          padding: 0;
+          overflow: hidden;
+          color: inherit;
+          line-height: normal;
+      }
+
+          .mdl-button--icon .material-icons {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-12px,-12px);
+              -ms-transform: translate(-12px,-12px);
+              transform: translate(-12px,-12px);
+              line-height: 24px;
+              width: 24px;
+          }
+
+          .mdl-button--icon.mdl-button--mini-icon {
+              height: 24px;
+              min-width: 24px;
+              width: 24px;
+          }
+
+              .mdl-button--icon.mdl-button--mini-icon .material-icons {
+                  top: 0;
+                  left: 0;
+              }
+
+          .mdl-button--icon .mdl-button__ripple-container {
+              border-radius: 50%;
+              -webkit-mask-image: -webkit-radial-gradient(circle,#fff,#000);
+          }
+
+      .mdl-button__ripple-container {
+          display: block;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 0;
+          overflow: hidden;
+      }
+
+      .mdl-button[disabled] .mdl-button__ripple-container .mdl-ripple {
+          background-color: transparent;
+      }
+
+      .mdl-button--primary.mdl-button--primary {
+          color: rgb(0,150,136);
+      }
+
+          .mdl-button--primary.mdl-button--primary .mdl-ripple {
+              background: rgb(255,255,255);
+          }
+
+          .mdl-button--primary.mdl-button--primary.mdl-button--raised,
+          .mdl-button--primary.mdl-button--primary.mdl-button--fab {
+              color: rgb(255,255,255);
+              background-color: rgb(0,150,136);
+          }
+
+      .mdl-button--accent.mdl-button--accent {
+          color: rgb(255,82,82);
+      }
+
+          .mdl-button--accent.mdl-button--accent .mdl-ripple {
+              background: rgb(255,255,255);
+          }
+
+          .mdl-button--accent.mdl-button--accent.mdl-button--raised,
+          .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+              color: rgb(255,255,255);
+              background-color: rgb(255,82,82);
+          }
+
+      .mdl-button[disabled][disabled] {
+          color: rgba(0,0,0,.26);
+          cursor: auto;
+          background-color: transparent;
+      }
+
+      .mdl-button--fab[disabled][disabled], .mdl-button--raised[disabled][disabled],
+      .mdl-button--colored[disabled][disabled] {
+          background-color: rgba(0,0,0,.12);
+          color: rgba(0,0,0,.26);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+      }
+
+
+
+      .check-asistencia .verificarAnterior-btn {
+          float: none;
+          font-size: 1.8rem;
+          padding: 5px 40px;
+      }
+
+      .phone-box-facilitadores .verificarAnterior-btn {
+          margin-right: 75px;
+          margin-top: 2px;
+      }
+
+      .verificarAnterior-btn {
+          text-transform: none;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          border: none !important;
+          color: #fff !important;
+          float: left;
+          background-color: #b1b0b0 !important;
+          padding: 7px 50px;
+          margin-top: 0;
+      }
+
+      .asistencia-title {
+          color: #000;
+          opacity: 0.8 !important;
+          font-weight: 500;
+          font-size: 3rem;
+          margin-bottom: 10px;
+          margin-left: 0px;
+          margin-top: 40px;
+          opacity: 0.8 !important;
+          font-size: 2.6rem;
+      }
+
+      #cargador {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -30px;
+          margin-left: -25px;
+      }
+
+      #div_carga {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 120%;
+          /*background: url(../Images/logo.png) repeat;*/
+          background: #CCC;
+          filter: alpha(opacity=60); /* IE */
+          -moz-opacity: 0.6; /* Mozilla */
+          opacity: 0.2; /* CSS3 */
+          display: none;
+          z-index: 1;
+      }
+  </style>
+
 </head>
 <body>
-<div class="container my-2" align="center">
 
-  <h3>Listado de Experiencias Laborales</h3>
-  <table style="width:80%" border="1"
-         class = "table table-striped table-responsive-md">
-    <thead>
-    <tr>
-      <th>Cargo</th>
-      <th>Fecha Inicio</th>
-      <th>Fecha Culminacion</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="trabajo:${allemplist}">
-      <td th:text="${trabajo.cargo}"></td>
-      <td th:text="${trabajo.tiempo_inicio}"></td>
-      <td th:text="${trabajo.timpo_final}"></td>
-    </tr>
-    </tbody>
-  </table>
 
-  <button type="button">
-    <a href="/admin">Volver</a>
-  </button>
+
+<div class="container">
+
+  <div class="tab-content onboarding-cards">
+
+    <div role="tabpanel" class="tab-pane active" id="sobremi">
+
+      <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-2"></div>
+        <div class="col-xs-10 col-sm-10 col-md-8">
+          <h4 class="asistencia-title">Listado de Experiencias Laborales</h4>
+          <br />
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-2"></div>
+        <div class="col-xs-10 col-sm-10 col-md-8">
+
+          <div class="paper-cards small">
+            <h3>Listado de Experiencias Laborales</h3>
+            <table style="width:80%" border="1"
+                   class = "table table-striped table-responsive-md">
+              <thead>
+              <tr>
+                <th>Cargo</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Culminacion</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="trabajo:${allemplist}">
+                <td th:text="${trabajo.cargo}"></td>
+                <td th:text="${trabajo.tiempo_inicio}"></td>
+                <td th:text="${trabajo.timpo_final}"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col-xs-1 col-sm-1 col-md-2"></div>
+    <div class="col-xs-10 col-sm-10 col-md-8">
+
+      <a href="/admin" id="btnAnterior" name="btnAnterior" onclick="fnAtras()" class="btn btn-raised verificarAnterior-btn">
+        volver
+      </a>
+
+
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
